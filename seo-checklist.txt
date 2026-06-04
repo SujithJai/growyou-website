@@ -1,0 +1,12 @@
+GroYou SEO Checklist
+
+1. Validate indexing and crawlability.
+2. Fix broken internal links and redirect chains.
+3. Improve Core Web Vitals and page speed.
+4. Map every service to dedicated search-intent pages.
+5. Build location pages for local demand capture.
+6. Strengthen title tags, meta descriptions and H1 structure.
+7. Add FAQ, service and organization schema.
+8. Improve on-page conversion paths and CTA visibility.
+9. Build topical authority clusters around commercial keywords.
+10. Track enquiries, calls and CRM stages back to organic traffic.

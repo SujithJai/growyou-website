@@ -1,0 +1,12 @@
+GroYou Google Ads Checklist
+
+1. Separate branded, non-branded and competitor intent.
+2. Confirm accurate conversion tracking in GA4 + GTM.
+3. Match offers and keywords to dedicated landing pages.
+4. Review search terms weekly and add negatives aggressively.
+5. Use audience overlays to improve intent signals.
+6. Test multiple headline and description angles.
+7. Segment Performance Max around products, margins or geographies.
+8. Map lead quality back into campaign optimisation.
+9. Align budgets to high-intent ad groups first.
+10. Report on qualified pipeline and revenue, not only leads.

@@ -46,27 +46,23 @@ export function HeroCanvas() {
 
     // ── Globe: lat/long wireframe lines ─────────────────────────────────────
     const latLonLines: THREE.Line[] = [];
-
     const lineMat = new THREE.LineBasicMaterial({
       color: "#1a6b2a",
       transparent: true,
       opacity: 0.55,
     });
 
-    // Latitude lines
     for (let lat = -80; lat <= 80; lat += 20) {
       const phi = THREE.MathUtils.degToRad(90 - lat);
       const r = 1.73;
       const points: THREE.Vector3[] = [];
       for (let lon = 0; lon <= 360; lon += 3) {
         const theta = THREE.MathUtils.degToRad(lon);
-        points.push(
-          new THREE.Vector3(
-            r * Math.sin(phi) * Math.cos(theta),
-            r * Math.cos(phi),
-            r * Math.sin(phi) * Math.sin(theta),
-          ),
-        );
+        points.push(new THREE.Vector3(
+          r * Math.sin(phi) * Math.cos(theta),
+          r * Math.cos(phi),
+          r * Math.sin(phi) * Math.sin(theta),
+        ));
       }
       const geo = new THREE.BufferGeometry().setFromPoints(points);
       const line = new THREE.Line(geo, lineMat);
@@ -74,20 +70,17 @@ export function HeroCanvas() {
       latLonLines.push(line);
     }
 
-    // Longitude lines
     for (let lon = 0; lon < 360; lon += 20) {
       const theta = THREE.MathUtils.degToRad(lon);
       const r = 1.73;
       const points: THREE.Vector3[] = [];
       for (let lat = -90; lat <= 90; lat += 3) {
         const phi = THREE.MathUtils.degToRad(90 - lat);
-        points.push(
-          new THREE.Vector3(
-            r * Math.sin(phi) * Math.cos(theta),
-            r * Math.cos(phi),
-            r * Math.sin(phi) * Math.sin(theta),
-          ),
-        );
+        points.push(new THREE.Vector3(
+          r * Math.sin(phi) * Math.cos(theta),
+          r * Math.cos(phi),
+          r * Math.sin(phi) * Math.sin(theta),
+        ));
       }
       const geo = new THREE.BufferGeometry().setFromPoints(points);
       const line = new THREE.Line(geo, lineMat);
@@ -95,34 +88,25 @@ export function HeroCanvas() {
       latLonLines.push(line);
     }
 
-    // ── Globe: surface dot particles (world-map style) ───────────────────────
+    // ── Globe surface dots ───────────────────────────────────────────────────
     const dotGeo = new THREE.BufferGeometry();
     const dotCount = 2200;
     const dotPos = new Float32Array(dotCount * 3);
-    let di = 0;
-    while (di < dotCount) {
+    for (let i = 0; i < dotCount; i++) {
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
       const r = 1.74 + Math.random() * 0.02;
-      dotPos[di * 3] = r * Math.sin(phi) * Math.cos(theta);
-      dotPos[di * 3 + 1] = r * Math.cos(phi);
-      dotPos[di * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
-      di++;
+      dotPos[i * 3]     = r * Math.sin(phi) * Math.cos(theta);
+      dotPos[i * 3 + 1] = r * Math.cos(phi);
+      dotPos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
     }
     dotGeo.setAttribute("position", new THREE.BufferAttribute(dotPos, 3));
-    const surfaceDots = new THREE.Points(
-      dotGeo,
-      new THREE.PointsMaterial({
-        color: "#43F000",
-        size: 0.028,
-        transparent: true,
-        opacity: 0.65,
-        depthWrite: false,
-      }),
-    );
+    const surfaceDots = new THREE.Points(dotGeo, new THREE.PointsMaterial({
+      color: "#43F000", size: 0.028, transparent: true, opacity: 0.65, depthWrite: false,
+    }));
     group.add(surfaceDots);
 
-    // ── Glowing orbital rings ────────────────────────────────────────────────
+    // ── Orbital rings ────────────────────────────────────────────────────────
     const rings = [
       { radius: 2.1,  tube: 0.022, rot: [Math.PI / 2, 0, 0] as [number,number,number], bright: true  },
       { radius: 2.85, tube: 0.016, rot: [0.85, 0.1, 0]      as [number,number,number], bright: false },
@@ -156,7 +140,7 @@ export function HeroCanvas() {
     }
     sparkleGroup.rotation.x = Math.PI / 2;
 
-    // ── Deep space ambient particles ─────────────────────────────────────────
+    // ── Deep space particles ─────────────────────────────────────────────────
     const bgParticleGeo = new THREE.BufferGeometry();
     const bgCount = 1100;
     const bgPos = new Float32Array(bgCount * 3);
@@ -169,16 +153,9 @@ export function HeroCanvas() {
       bgPos[i * 3 + 2] = r * Math.cos(phi);
     }
     bgParticleGeo.setAttribute("position", new THREE.BufferAttribute(bgPos, 3));
-    const bgParticles = new THREE.Points(
-      bgParticleGeo,
-      new THREE.PointsMaterial({
-        color: "#7dff58",
-        size: 0.042,
-        transparent: true,
-        opacity: 0.8,
-        depthWrite: false,
-      }),
-    );
+    const bgParticles = new THREE.Points(bgParticleGeo, new THREE.PointsMaterial({
+      color: "#7dff58", size: 0.042, transparent: true, opacity: 0.8, depthWrite: false,
+    }));
     scene.add(bgParticles);
 
     // ── Pointer & resize ─────────────────────────────────────────────────────
@@ -200,14 +177,12 @@ export function HeroCanvas() {
     let frame = 0;
     const animate = () => {
       frame = requestAnimationFrame(animate);
-
       group.rotation.y += (pointer.x * 0.3 - group.rotation.y) * 0.04;
       group.rotation.x += (-pointer.y * 0.16 - group.rotation.x) * 0.04;
       camera.position.x += (pointer.x * 0.5 - camera.position.x) * 0.03;
       camera.position.y += (pointer.y * 0.35 - camera.position.y) * 0.03;
       camera.lookAt(0, 0, 0);
 
-      // Globe auto-spin
       globeBase.rotation.y += 0.0025;
       surfaceDots.rotation.y += 0.0025;
       latLonLines.forEach((l) => (l.rotation.y += 0.0025));
@@ -244,9 +219,9 @@ export function HeroCanvas() {
   }, []);
 
   const cards = [
-    { title: "Meta Ads",   stat: "CTR 4.9%",  delta: "+32%", className: "left-4 top-6 md:left-8 md:top-10",         barW: "78%" },
-    { title: "Google Ads", stat: "ROAS 5.2x", delta: "+48%", className: "right-4 top-12 md:right-10 md:top-16",      barW: "85%" },
-    { title: "SEO",        stat: "+183 KWS",  delta: "+65%", className: "bottom-16 left-8 md:bottom-20 md:left-16",  barW: "72%" },
+    { title: "Meta Ads",   stat: "CTR 4.9%",  delta: "+32%", className: "left-4 top-6 md:left-8 md:top-10",          barW: "78%" },
+    { title: "Google Ads", stat: "ROAS 5.2x", delta: "+48%", className: "right-4 top-12 md:right-10 md:top-16",       barW: "85%" },
+    { title: "SEO",        stat: "+183 KWS",  delta: "+65%", className: "bottom-16 left-8 md:bottom-20 md:left-16",   barW: "72%" },
     { title: "Leads",      stat: "124 / mo",  delta: "+38%", className: "bottom-10 right-5 md:bottom-16 md:right-14", barW: "68%" },
   ];
 
@@ -254,48 +229,33 @@ export function HeroCanvas() {
     <div className="relative h-[420px] w-full overflow-hidden rounded-[2rem] border border-[#43F000]/15 bg-[radial-gradient(ellipse_at_center,rgba(67,240,0,0.18),transparent_38%),linear-gradient(180deg,rgba(2,20,10,0.97),rgba(0,6,2,0.99))] shadow-[0_0_100px_rgba(67,240,0,0.12),inset_0_0_60px_rgba(67,240,0,0.03)] lg:h-[680px]">
       <div ref={containerRef} className="absolute inset-0" />
 
-      {/* GroYou logo overlay — center of globe */}
+      {/* ── Logo overlay: actual logo2.png centered on the globe ── */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="flex flex-col items-center select-none" style={{ transform: "translateY(-2%)" }}>
-          {/* GY monogram */}
-          <div
-            className="mb-1 flex items-center justify-center rounded-full font-black tracking-tight text-white"
+        <div
+          style={{
+            // slight upward nudge so it sits on the globe face
+            transform: "translateY(-4%)",
+            // glow halo behind logo
+            filter: "drop-shadow(0 0 18px rgba(67,240,0,0.85)) drop-shadow(0 0 40px rgba(67,240,0,0.45))",
+          }}
+        >
+          <img
+            src="/logo2.png"
+            alt="GroYou"
             style={{
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              lineHeight: 1,
-              textShadow: "0 0 30px rgba(67,240,0,0.9), 0 0 60px rgba(67,240,0,0.5)",
-              filter: "drop-shadow(0 0 18px #43F000)",
+              width: "clamp(110px, 18vw, 220px)",
+              height: "auto",
+              objectFit: "contain",
+              // make the black background of the PNG transparent via mix-blend-mode
+              mixBlendMode: "screen",
+              userSelect: "none",
+              pointerEvents: "none",
             }}
-          >
-            <span style={{ color: "#ffffff" }}>G</span>
-            <span style={{ color: "#43F000" }}>Y</span>
-            <span
-              style={{
-                display: "inline-block",
-                marginLeft: "4px",
-                width: "clamp(14px,2.5vw,22px)",
-                height: "clamp(14px,2.5vw,22px)",
-                background: "#43F000",
-                clipPath: "polygon(20% 0%, 80% 0%, 100% 20%, 60% 50%, 100% 100%, 40% 100%, 40% 60%, 0% 20%)",
-              }}
-            />
-          </div>
-          {/* GroYou wordmark */}
-          <div
-            className="font-black tracking-wide"
-            style={{
-              fontSize: "clamp(1.1rem, 3vw, 2rem)",
-              color: "#ffffff",
-              textShadow: "0 0 20px rgba(67,240,0,0.7), 0 0 40px rgba(67,240,0,0.3)",
-              letterSpacing: "0.04em",
-            }}
-          >
-            Gro<span style={{ color: "#43F000" }}>You</span>
-          </div>
+          />
         </div>
       </div>
 
-      {/* Stat cards */}
+      {/* ── Stat cards ── */}
       {cards.map((card) => (
         <div key={card.title} className={`pointer-events-none absolute ${card.className}`}>
           <div
@@ -311,15 +271,13 @@ export function HeroCanvas() {
               {card.title}
             </div>
             <div className="mt-1.5 text-base font-bold text-white md:text-xl">{card.stat}</div>
-            {/* Delta with arrow */}
             <div className="mt-1 flex items-center gap-1">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
                 <path d="M5 1L9 7H1L5 1Z" fill="#43F000" />
               </svg>
               <span className="text-[11px] font-semibold text-[#43F000] md:text-xs">{card.delta}</span>
             </div>
-            {/* Progress bar */}
-            <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/8 md:h-1.5">
+            <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10 md:h-1.5">
               <div
                 className="h-full rounded-full"
                 style={{
@@ -335,7 +293,6 @@ export function HeroCanvas() {
 
       {/* Bottom fade */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#000602] to-transparent" />
-      {/* Top subtle vignette */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/30 to-transparent" />
     </div>
   );

@@ -368,10 +368,17 @@ function Preloader({ progress }: { progress: number }) {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mb-10 flex h-28 w-28 items-center justify-center rounded-[2rem] border border-[#00ff88]/30 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.14),transparent_36%),linear-gradient(135deg,rgba(0,255,136,0.18),rgba(255,255,255,0.04))] shadow-[0_0_100px_rgba(0,255,136,0.18)]"
         >
-          <div className="relative text-4xl font-semibold tracking-[-0.08em] text-white">
-            GRO
-            <span className="absolute -right-6 -top-5 text-xl text-[#00ff88]">↗</span>
-          </div>
+          <div className="relative flex items-center justify-center">
+  <img
+    src="/logo2.png"
+    alt="GroYou"
+    className="h-20 w-20 object-contain"
+  />
+
+  <span className="absolute -right-6 -top-5 text-xl text-[#00ff88]">
+    ↗
+  </span>
+</div>
         </motion.div>
         <div className="space-y-3">
           <div className="text-sm uppercase tracking-[0.34em] text-white/45">GROYOU loading systems</div>

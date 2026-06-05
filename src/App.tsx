@@ -922,7 +922,6 @@ export default function App() {
       <header className="fixed inset-x-0 top-5 z-50 mx-auto w-[min(96%,1280px)] rounded-full border border-white/10 bg-black/25 px-4 py-3 backdrop-blur-2xl shadow-[0_10px_60px_rgba(0,0,0,0.35)]">
         <div className="flex items-center justify-between gap-4">
          <a href="#hero" className="flex items-center gap-3">
-<a href="#hero" className="flex items-center gap-3">
   <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-[#43F000]/20 bg-[#43F000]/10 text-sm font-bold tracking-[-0.08em] text-[#cfffbc]">
     GY
   </div>

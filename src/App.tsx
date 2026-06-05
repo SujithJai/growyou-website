@@ -923,31 +923,16 @@ export default function App() {
         <div className="flex items-center justify-between gap-4">
          <a href="#hero" className="flex items-center gap-3">
 <a href="#hero" className="flex items-center gap-3">
-  <motion.img
-    src="/logo png.png"
-    alt="GroYou Logo"
-    className="h-14 w-auto"
-    animate={{
-      y: [0, -4, 0],
-      filter: [
-        "drop-shadow(0 0 0px #43F000)",
-        "drop-shadow(0 0 12px #43F000)",
-        "drop-shadow(0 0 0px #43F000)"
-      ]
-    }}
-    transition={{
-      duration: 3,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }}
-    whileHover={{
-      scale: 1.08,
-      rotate: 2
-    }}
-  />
+  <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-[#43F000]/20 bg-[#43F000]/10 text-sm font-bold tracking-[-0.08em] text-[#cfffbc]">
+    GY
+  </div>
+  <div>
+    <div className="text-sm font-semibold tracking-[0.04em] text-white">GroYou</div>
+    <div className="text-[11px] uppercase tracking-[0.26em] text-white/45">
+      Grow smarter. Scale faster.
+    </div>
+  </div>
 </a>
-
-<nav className="hidden items-center gap-6 text-sm text-white/60 lg:flex">
 
           <nav className="hidden items-center gap-6 text-sm text-white/60 lg:flex">
             <a href="#story" className="transition hover:text-white">Story</a>

@@ -243,7 +243,7 @@ export function HeroCanvas() {
             src="/logo2.png"
             alt="GroYou"
             style={{
-              width: "clamp(110px, 18vw, 220px)",
+              width: "clamp(300px, 18vw, 600px)",
               height: "auto",
               objectFit: "contain",
               // make the black background of the PNG transparent via mix-blend-mode

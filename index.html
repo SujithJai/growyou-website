@@ -26,6 +26,112 @@
       name="twitter:description"
       content="Premium SEO, paid media, landing pages, analytics, automation and AI marketing systems for modern brands."
     />
+
+    <!-- Google Fonts: Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Global CSS Design Tokens — Black + Neon Green (from image reference) -->
+    <style>
+      :root {
+        /* ── Core Palette ── */
+        --color-bg:          #000000;   /* pure black base */
+        --color-bg-soft:     #030A04;   /* very dark green-black */
+        --color-bg-card:     #071009;   /* card/panel background */
+        --color-bg-border:   #0F2E14;   /* subtle dark green border */
+
+        /* ── Accent / Brand ── */
+        --color-accent:      #39FF14;   /* neon green — primary accent */
+        --color-accent-glow: rgba(57, 255, 20, 0.18);
+        --color-accent-2:    #22C55E;   /* mid green — secondary accent */
+        --color-accent-2-glow: rgba(34, 197, 94, 0.18);
+        --color-accent-warm: #A3FF6F;   /* light lime — highlights */
+
+        /* ── Text ── */
+        --color-text:        #F0FFF0;   /* primary text, soft white-green */
+        --color-text-muted:  #6B9F72;   /* secondary / subtext */
+        --color-text-dim:    #2D4A30;   /* disabled / placeholder */
+
+        /* ── Gradients ── */
+        --gradient-hero:     linear-gradient(135deg, #000000 0%, #030A04 50%, #071009 100%);
+        --gradient-accent:   linear-gradient(90deg, #39FF14 0%, #22C55E 100%);
+        --gradient-card:     linear-gradient(135deg, rgba(57,255,20,0.06) 0%, rgba(34,197,94,0.04) 100%);
+        --gradient-cta:      linear-gradient(90deg, #39FF14 0%, #22C55E 100%);
+
+        /* ── Typography ── */
+        --font-display:      'Syne', sans-serif;
+        --font-body:         'DM Sans', sans-serif;
+
+        /* ── Sizing ── */
+        --radius-sm:  6px;
+        --radius-md:  12px;
+        --radius-lg:  20px;
+        --radius-xl:  32px;
+
+        /* ── Shadows / Glow ── */
+        --shadow-accent:  0 0 32px rgba(57, 255, 20, 0.25), 0 0 80px rgba(57, 255, 20, 0.08);
+        --shadow-card:    0 4px 32px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(57,255,20,0.06) inset;
+
+        /* ── Transitions ── */
+        --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      *, *::before, *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        font-family: var(--font-body);
+        font-size: 16px;
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        color: var(--color-text);
+      }
+
+      .accent {
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: var(--color-bg); }
+      ::-webkit-scrollbar-thumb {
+        background: var(--color-bg-border);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+      ::selection {
+        background: var(--color-accent-glow);
+        color: var(--color-accent);
+      }
+    </style>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",

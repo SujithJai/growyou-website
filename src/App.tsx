@@ -923,7 +923,7 @@ export default function App() {
         <div className="flex items-center justify-between gap-4">
          <a href="#hero" className="flex items-center gap-3">
   <img
-    src="/LOGO.png"
+    src="/logo.png"
     alt="GroYou Logo"
     className="h-14 w-auto"
   />

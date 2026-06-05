@@ -922,28 +922,32 @@ export default function App() {
       <header className="fixed inset-x-0 top-5 z-50 mx-auto w-[min(96%,1280px)] rounded-full border border-white/10 bg-black/25 px-4 py-3 backdrop-blur-2xl shadow-[0_10px_60px_rgba(0,0,0,0.35)]">
         <div className="flex items-center justify-between gap-4">
          <a href="#hero" className="flex items-center gap-3">
-<motion.img
-  src="/logo png.png"
-  alt="GroYou Logo"
-  className="h-14 w-auto"
-  animate={{
-    y: [0, -4, 0],
-    filter: [
-      "drop-shadow(0 0 0px #43F000)",
-      "drop-shadow(0 0 12px #43F000)",
-      "drop-shadow(0 0 0px #43F000)"
-    ]
-  }}
-  transition={{
-    duration: 3,
-    repeat: Infinity,
-    ease: "easeInOut"
-  }}
-  whileHover={{
-    scale: 1.08,
-    rotate: 2
-  }}
-/>
+<a href="#hero" className="flex items-center gap-3">
+  <motion.img
+    src="/logo png.png"
+    alt="GroYou Logo"
+    className="h-14 w-auto"
+    animate={{
+      y: [0, -4, 0],
+      filter: [
+        "drop-shadow(0 0 0px #43F000)",
+        "drop-shadow(0 0 12px #43F000)",
+        "drop-shadow(0 0 0px #43F000)"
+      ]
+    }}
+    transition={{
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }}
+    whileHover={{
+      scale: 1.08,
+      rotate: 2
+    }}
+  />
+</a>
+
+<nav className="hidden items-center gap-6 text-sm text-white/60 lg:flex">
 
           <nav className="hidden items-center gap-6 text-sm text-white/60 lg:flex">
             <a href="#story" className="transition hover:text-white">Story</a>

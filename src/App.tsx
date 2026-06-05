@@ -938,7 +938,7 @@ export default function App() {
 </div>
   <div>
     <div className="text-sm font-semibold tracking-[0.04em] text-white">GroYou</div>
-    <div className="text-[11px] uppercase tracking-[0.26em] text-white/45">
+    <div className="text-[10px] uppercase tracking-[0.26em] text-white/45">
       Grow smarter. Scale faster.
     </div>
   </div>
